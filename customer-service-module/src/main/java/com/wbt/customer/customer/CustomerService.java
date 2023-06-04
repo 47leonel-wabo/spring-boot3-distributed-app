@@ -4,15 +4,16 @@ import com.wbt.customer.customer.dto.CustomerRegistrationRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService() {
+public record CustomerService(CustomerRepository customerRepository) {
+
     public void register(final CustomerRegistrationRequest registrationRequest) {
-        // todo: build customer
-        final var buildedCustomer = Customer.builder()
-                .name(registrationRequest.name())
+        final var builtCustomer = Customer.builder()
+                .firstName(registrationRequest.firstName())
+                .lastName(registrationRequest.lastName())
                 .email(registrationRequest.email())
                 .build();
         // todo: check if customer exist
         // todo: check if email is valid
-        // todo: check if email is taken
+        customerRepository.save(builtCustomer);
     }
 }
