@@ -1,0 +1,12 @@
+server:
+  port: 8765
+
+# Because this is the server, no need fetch the registry or register
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+spring:
+  application:
+    name: eureka-server
