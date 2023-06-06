@@ -41,9 +41,11 @@ public record CustomerService(
         }
 
         // Call for Notification Service
+        // TODO: Make it async. i.e add to queue
         return notificationClient.notifyCustomer(new NotificationRequest(
                 "Fraud Verification",
-                "Customer with ID = %s is not a Fraudster!".formatted(builtCustomer.getId()))
+                "Customer with ID = %s is not a Fraudster!".formatted(builtCustomer.getId()),
+                builtCustomer.getEmail())
         );
     }
 }

@@ -2,8 +2,6 @@ package com.wbt.notification.notification;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Hibernate;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -21,27 +19,30 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notification_id_sequence")
     private Long id;
 
-    private String title;
-    private String content;
+    private String subject;
+    private String message;
+    private String sender;
+    private String toCustomerEmail;
+    private LocalDateTime sentAt;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    public Notification(String title, String content) {
-        this.title = title;
-        this.content = content;
+    public Notification(String subject, String message, String sender, String toCustomerEmail, LocalDateTime sentAt) {
+        this.subject = subject;
+        this.message = message;
+        this.sender = sender;
+        this.toCustomerEmail = toCustomerEmail;
+        this.sentAt = sentAt;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Notification that = (Notification) o;
-        return id != null && Objects.equals(id, that.id);
+        return Objects.equals(id, that.id) && Objects.equals(subject, that.subject) && Objects.equals(message, that.message) && Objects.equals(sender, that.sender) && Objects.equals(toCustomerEmail, that.toCustomerEmail) && Objects.equals(sentAt, that.sentAt);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(id, subject, message, sender, toCustomerEmail, sentAt);
     }
 }

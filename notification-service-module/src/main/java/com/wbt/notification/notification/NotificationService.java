@@ -1,17 +1,23 @@
 package com.wbt.notification.notification;
 
+import com.wbt.clients.notification.NotificationRequest;
 import com.wbt.clients.notification.NotificationResponse;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public record NotificationService(NotificationRepository notificationRepository) {
 
-    public NotificationResponse createNotification(final String title, final String content) {
+    public NotificationResponse send(final NotificationRequest notificationRequest) {
         final var notification = Notification.builder()
-                .title(title)
-                .content(content)
+                .subject(notificationRequest.subject())
+                .message(notificationRequest.message())
+                .toCustomerEmail(notificationRequest.targetEmail())
+                .sender("wbt")
+                .sentAt(LocalDateTime.now())
                 .build();
         notificationRepository.saveAndFlush(notification);
-        return new NotificationResponse(notification.getTitle(), notification.getContent());
+        return new NotificationResponse(notification.getSubject(), notification.getMessage(), notification.getSender(), notification.getToCustomerEmail());
     }
 }

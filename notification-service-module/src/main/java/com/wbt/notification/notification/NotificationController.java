@@ -12,7 +12,7 @@ public record NotificationController(NotificationService notificationService) {
 
     @PostMapping
     public NotificationResponse notifyCustomer(final @RequestBody NotificationRequest request){
-        log.info("{} \n {}", request.title(), request.content());
-        return notificationService.createNotification(request.title(), request.content());
+        log.info("Notification to: {} \n On: {} \n Message: {}", request.targetEmail(), request.subject(), request.message());
+        return notificationService.send(request);
     }
 }
