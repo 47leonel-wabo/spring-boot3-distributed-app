@@ -21,7 +21,7 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
         // todo: check if email is valid
 
         final var response = restTemplate.getForObject(
-                "http://localhost:8081/api/v1/fraud-check/{customerId}",
+                "http://FRAUD/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 builtCustomer.getId()
         );
