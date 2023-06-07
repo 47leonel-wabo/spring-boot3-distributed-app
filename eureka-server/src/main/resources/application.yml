@@ -10,3 +10,8 @@ eureka:
 spring:
   application:
     name: eureka-server
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

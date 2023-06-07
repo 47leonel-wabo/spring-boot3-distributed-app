@@ -16,7 +16,6 @@ services:
     networks:
       - postgres
 
-
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4
@@ -31,6 +30,12 @@ services:
       - pgadmin:/root/.pgadmin
     networks:
       - postgres
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
 
 networks:
   postgres:
