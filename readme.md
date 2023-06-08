@@ -9,6 +9,7 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 * Customer Service
 * Fraud Service
 * Notification Service
+* Api Gateway
 
 ## Dependencies
 
@@ -26,6 +27,13 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 - Zipkin Reporter Brave
 - Spring Boot Actuator
 - Feign Micrometer
+
+# Docker Compose with services
+
+- Postgres
+- PgAdmin
+- Zipkin
+- RabbitMQ
 
 ## Credit
 
