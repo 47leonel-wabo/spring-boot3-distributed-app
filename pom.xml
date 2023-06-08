@@ -14,6 +14,7 @@
         <module>eureka-server</module>
         <module>clients</module>
         <module>notification-service-module</module>
+        <module>api-gateway</module>
     </modules>
 
     <name>distributed-app</name>
