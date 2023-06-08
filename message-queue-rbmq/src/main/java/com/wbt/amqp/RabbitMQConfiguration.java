@@ -1,5 +1,6 @@
 package com.wbt.amqp;
 
+import lombok.AllArgsConstructor;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -10,8 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public record RabbitMQConfiguration(ConnectionFactory connectionFactory) {
+@AllArgsConstructor
+public class RabbitMQConfiguration {
 
+    private final ConnectionFactory connectionFactory;
     // This allows to send message to the queue
     @Bean
     public AmqpTemplate amqpTemplate() {

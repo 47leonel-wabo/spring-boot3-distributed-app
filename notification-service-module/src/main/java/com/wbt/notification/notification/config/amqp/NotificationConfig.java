@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class NotificationConfig {
 
     @Value("${rabbitmq.exchanges.internal}")
-    private String internaleExchange;
+    private String internalExchange;
 
     @Value("${rabbitmq.queue.notification}")
     private String notificationQueue;
@@ -22,8 +22,8 @@ public class NotificationConfig {
 
     // The Exchange
     @Bean
-    public TopicExchange internalTopixExchange() {
-        return new TopicExchange(this.internaleExchange);
+    public TopicExchange internalTopicExchange() {
+        return new TopicExchange(this.internalExchange);
     }
 
     // The Queue
@@ -37,12 +37,12 @@ public class NotificationConfig {
     public Binding internalToNotificationBinding() {
         return BindingBuilder
                 .bind(notificationQueue())
-                .to(internalTopixExchange())
+                .to(internalTopicExchange())
                 .with(this.internalNotificationRoutingKey);
     }
 
-    public String getInternaleExchange() {
-        return internaleExchange;
+    public String getInternalExchange() {
+        return internalExchange;
     }
 
     public String getNotificationQueue() {
