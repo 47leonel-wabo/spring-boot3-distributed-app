@@ -12,11 +12,14 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 
 ## Dependencies
 
-- Spring Cloud (starter module netflix-eureka-server and client, openfeign)
-- Spring Boot Web
+- Spring Cloud starter  netflix-eureka-server
+- Spring Cloud starter  netflix-eureka-client
+- Spring Cloud starter OpenFeign
+- Spring Cloud Starter Gateway
+- Spring Boot Starter Web
 - Lombok
-- Spring Data JPA
-- Spring Boot Test
+- Spring Starter Data JPA
+- Spring Boot Starter Test
 - PostgreSQL
 - Micrometer Observation
 - Micrometer Tracing Bridge Brave
