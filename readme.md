@@ -1,6 +1,6 @@
 # Spring Boot Multi-module Application
 
-Hands on multi-module application development with Spring Boot 3.x.
+Hands on multi-module application development with Spring Boot 3.x and Spring Cloud.
 
 ## Modules
 
@@ -18,6 +18,11 @@ Hands on multi-module application development with Spring Boot 3.x.
 - Spring Data JPA
 - Spring Boot Test
 - PostgreSQL
+- Micrometer Observation
+- Micrometer Tracing Bridge Brave
+- Zipkin Reporter Brave
+- Spring Boot Actuator
+- Feign Micrometer
 
 ## Credit
 
