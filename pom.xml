@@ -15,6 +15,7 @@
         <module>clients</module>
         <module>notification-service-module</module>
         <module>api-gateway</module>
+        <module>message-queue-rbmq</module>
     </modules>
 
     <name>distributed-app</name>
