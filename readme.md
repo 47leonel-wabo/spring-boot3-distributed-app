@@ -29,6 +29,7 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 - Spring Boot Actuator
 - Feign Micrometer
 - Spring Boot Starter AMQP
+- JIB
 
 # Docker Compose with services as containers
 
