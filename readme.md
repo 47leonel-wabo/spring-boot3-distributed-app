@@ -1,6 +1,6 @@
 # Spring Boot Multi-module Application
 
-Hands on multi-module application development with Spring Boot 3.x and Spring Cloud.
+Hands on multi-module application development with Spring Boot 3.x and Spring Cloud with Java 17.
 
 ## Modules
 
