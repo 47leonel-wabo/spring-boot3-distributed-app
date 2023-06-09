@@ -30,7 +30,7 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 - Feign Micrometer
 - Spring Boot Starter AMQP
 
-# Docker Compose with services
+# Docker Compose with services as containers
 
 - Postgres
 - PgAdmin
