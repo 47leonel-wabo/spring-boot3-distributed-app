@@ -1,21 +1,18 @@
 package com.wbt.customer.customer;
 
+import com.wbt.amqp.RabbitMQMessageProducer;
 import com.wbt.clients.fraud.FraudClient;
-import com.wbt.clients.notification.NotificationClient;
 import com.wbt.clients.notification.NotificationRequest;
-import com.wbt.clients.notification.NotificationResponse;
 import com.wbt.customer.customer.dto.CustomerRegistrationRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public record CustomerService(
         CustomerRepository customerRepository,
-        RestTemplate restTemplate,
         FraudClient fraudClient,
-        NotificationClient notificationClient) {
+        RabbitMQMessageProducer messageProducer) {
 
-    public NotificationResponse register(final CustomerRegistrationRequest registrationRequest) {
+    public void register(final CustomerRegistrationRequest registrationRequest) {
         final var builtCustomer = Customer.builder()
                 .firstName(registrationRequest.firstName())
                 .lastName(registrationRequest.lastName())
@@ -40,12 +37,13 @@ public record CustomerService(
             throw new IllegalStateException("Fraudster");
         }
 
-        // Call for Notification Service
-        // TODO: Make it async. i.e add to queue
-        return notificationClient.notifyCustomer(new NotificationRequest(
+        // Call for Notification Service (async way)
+        NotificationRequest notificationRequest = new NotificationRequest(
                 "Fraud Verification",
                 "Customer with ID = %s is not a Fraudster!".formatted(builtCustomer.getId()),
-                builtCustomer.getEmail())
-        );
+                builtCustomer.getEmail());
+
+        // Messaging using RabbitMQ (Async)
+        messageProducer.publish(notificationRequest, "internal.exchange", "internal.notification.routing-key");
     }
 }
