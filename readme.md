@@ -38,6 +38,11 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 - Zipkin
 - RabbitMQ
 
+# Useful resources
+
+- For configuring JIB [Dockerizing a Spring Boot Application](https://betulsahinn.medium.com/dockerizing-a-spring-boot-application-and-using-the-jib-maven-plugin-95c329866f34)
+- For Spring Boot 3 [Micrometer + Zipkin instead of Sleuth + Zipkin](https://www.appsdeveloperblog.com/micrometer-and-zipkin-in-spring-boot/)
+
 ## Credit
 
 🔥 Happy Coding!
