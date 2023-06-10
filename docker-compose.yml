@@ -36,6 +36,8 @@ services:
     container_name: zipkin
     ports:
       - "9411:9411"
+    networks:
+      - spring-apps
   # RABBITMQ (Message queue)
   rabbitmq:
     image: rabbitmq:3.12-management-alpine
@@ -51,6 +53,8 @@ services:
     container_name: eureka-server
     ports:
       - "8761:8761"
+    networks:
+      - spring-apps
     depends_on:
       - zipkin
   #  --> API GATEWAY
@@ -59,6 +63,8 @@ services:
     container_name: api-gateway
     ports:
       - "8083:8083"
+    networks:
+      - spring-apps
     depends_on:
       - zipkin
       - eureka-server
@@ -68,6 +74,8 @@ services:
     container_name: customer-service
     ports:
       - "8080:8080"
+    networks:
+      - spring-apps
     depends_on:
       - zipkin
       - eureka-server
@@ -77,6 +85,8 @@ services:
     container_name: fraud-service
     ports:
       - "8081:8081"
+    networks:
+      - spring-apps
     depends_on:
       - zipkin
       - eureka-server
@@ -87,12 +97,16 @@ services:
     container_name: notification-service
     ports:
       - "8082:8082"
+    networks:
+      - spring-apps
     depends_on:
       - zipkin
       - customer-service
 
 networks:
   postgres:
+    driver: bridge
+  spring-apps:
     driver: bridge
 
 volumes:
