@@ -44,6 +44,53 @@ services:
       - "5672:5672" # inter service
       - "15672:15672" # for management console
 
+  #  OUR OWN SERVICES
+  #  --> EUREKA-SERVER
+  eureka-server:
+    image: greengorilla7/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    depends_on:
+      - zipkin
+  #  --> API GATEWAY
+  api-gateway:
+    image: greengorilla7/api-getway:latest
+    container_name: api-gateway
+    ports:
+      - "8083:8083"
+    depends_on:
+      - zipkin
+      - eureka-server
+  # --> CUSTOMER
+  customer-service:
+    image: greengorilla7/customer-service-module:latest
+    container_name: customer-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - zipkin
+      - eureka-server
+  # --> FRAUD
+  fraud-service:
+    image: greengorilla7/fraud-service-module:latest
+    container_name: fraud-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - zipkin
+      - eureka-server
+      - customer-service
+  # --> NOTIFICATION
+  notification-service:
+    image: greengorilla7/notification-service-module:latest
+    container_name: notification-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - zipkin
+      - customer-service
+
 networks:
   postgres:
     driver: bridge
