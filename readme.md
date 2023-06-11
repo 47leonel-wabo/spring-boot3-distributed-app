@@ -42,6 +42,8 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 
 - For configuring JIB [Dockerizing a Spring Boot Application](https://betulsahinn.medium.com/dockerizing-a-spring-boot-application-and-using-the-jib-maven-plugin-95c329866f34)
 - For Spring Boot 3 [Micrometer + Zipkin instead of Sleuth + Zipkin](https://www.appsdeveloperblog.com/micrometer-and-zipkin-in-spring-boot/)
+- Zipkin baseUrl [How to configure zipkin baseUrl in SpringBoot 3](https://stackoverflow.com/questions/75758772/how-to-configure-zipkin-baseurl-in-springboot-3)
+- Blog [Microservices with Spring Boot 3 and Spring Cloud](https://piotrminkowski.com/2023/03/13/microservices-with-spring-boot-3-and-spring-cloud/)
 
 ## Credit
 
