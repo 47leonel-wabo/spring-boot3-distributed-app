@@ -45,14 +45,18 @@ services:
     ports:
       - "5672:5672" # inter service
       - "15672:15672" # for management console
+    networks:
+      - spring-apps
 
-  #  OUR OWN SERVICES
+  #  OUR OWN SERVICES FROM OUR DOCKER HUB REPOSITORY greengorilla7
   #  --> EUREKA-SERVER
   eureka-server:
     image: greengorilla7/eureka-server:latest
     container_name: eureka-server
     ports:
       - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring-apps
     depends_on:
@@ -63,45 +67,60 @@ services:
     container_name: api-gateway
     ports:
       - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring-apps
     depends_on:
       - zipkin
-      - eureka-server
   # --> CUSTOMER
   customer-service:
     image: greengorilla7/customer-service-module:latest
     container_name: customer-service
     ports:
       - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring-apps
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
+      - postgres
+      - rabbitmq
   # --> FRAUD
   fraud-service:
     image: greengorilla7/fraud-service-module:latest
     container_name: fraud-service
     ports:
       - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring-apps
+      - postgres
     depends_on:
       - zipkin
       - eureka-server
-      - customer-service
+      - rabbitmq
+      - postgres
   # --> NOTIFICATION
   notification-service:
     image: greengorilla7/notification-service-module:latest
     container_name: notification-service
     ports:
       - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring-apps
+      - postgres
     depends_on:
       - zipkin
-      - customer-service
+      - rabbitmq
+      - postgres
+      - eureka-server
 
 networks:
   postgres:

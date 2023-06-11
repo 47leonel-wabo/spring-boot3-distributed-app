@@ -1,0 +1,20 @@
+server:
+  port: 8761
+
+# Because this is the server, no need fetch the registry or register
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+spring:
+  application:
+    name: eureka-server
+
+management:
+  zipkin:
+    tracing:
+      endpoint: zipkin:9411
+  tracing:
+    sampling:
+      probability: 1.0
