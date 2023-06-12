@@ -98,6 +98,12 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-micrometer</artifactId>
         </dependency>
+        <!--TRACING DATASOURCE-->
+        <dependency>
+            <groupId>net.ttddyy.observation</groupId>
+            <artifactId>datasource-micrometer-spring-boot</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         <!--CLIENT FOR FEIGN CONFIGURATION-->
         <dependency>
             <groupId>com.wbt.app</groupId>
