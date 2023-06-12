@@ -26,7 +26,7 @@ eureka:
 management:
   zipkin:
     tracing:
-      endpoint: zipkin:9411
+      endpoint: http://zipkin:9411/api/v2/spans
   tracing:
     sampling:
       probability: 1.0
