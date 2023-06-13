@@ -2,6 +2,17 @@
 
 Hands on multi-module application development with Spring Boot 3.x and Spring Cloud with Java 17.
 
+# Technologies
+
+* Java 17
+* Spring Boot 3.0.5
+* Spring Cloud
+* Kubernetes
+* Docker
+* RabbitMQ
+* Postgres
+
+
 ## Modules
 
 * Clients (OpenFeign to link services)
@@ -10,7 +21,7 @@ Hands on multi-module application development with Spring Boot 3.x and Spring Cl
 * Fraud Service
 * Notification Service
 * Api Gateway
-* RabbitMQ
+* RabbitMQ (messaging)
 
 ## Dependencies
 
