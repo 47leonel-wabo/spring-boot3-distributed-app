@@ -1,0 +1,31 @@
+# POSTGRES VOLUME
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pc-valume
+  labels:
+    type: local
+    app: postgres
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /mnt/data
+---
+# POSTGRES VOLUME CLAIM
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pc-valume-claim
+  labels:
+    app: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
