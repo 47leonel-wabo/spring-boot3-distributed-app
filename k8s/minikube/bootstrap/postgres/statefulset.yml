@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: postgres
           persistentVolumeClaim:
-            claimName: postgres-pc-valume-claim   # This the name given in volume.yml file (2nd section)
+            claimName: postgres-pc-valume-claim   # This the name given in rbac.yml file (2nd section)
       containers:
         - name: postgres
           image: postgres:14
