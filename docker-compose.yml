@@ -50,29 +50,29 @@ services:
 
   #  OUR OWN SERVICES FROM OUR DOCKER HUB REPOSITORY greengorilla7
   #  --> EUREKA-SERVER
-  eureka-server:
-    image: greengorilla7/eureka-server:latest
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring-apps
-    depends_on:
-      - zipkin
+  #  eureka-server:
+  #    image: greengorilla7/eureka-server:latest
+  #    container_name: eureka-server
+  #    ports:
+  #      - "8761:8761"
+  #    environment:
+  #      - SPRING_PROFILES_ACTIVE=docker
+  #    networks:
+  #      - spring-apps
+  #    depends_on:
+  #      - zipkin
   #  --> API GATEWAY
-  api-gateway:
-    image: greengorilla7/api-getway:latest
-    container_name: api-gateway
-    ports:
-      - "8083:8083"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring-apps
-    depends_on:
-      - zipkin
+  #  api-gateway:
+  #    image: greengorilla7/api-getway:latest
+  #    container_name: api-gateway
+  #    ports:
+  #      - "8083:8083"
+  #    environment:
+  #      - SPRING_PROFILES_ACTIVE=docker
+  #    networks:
+  #      - spring-apps
+  #    depends_on:
+  #      - zipkin
   # --> CUSTOMER
   customer-service:
     image: greengorilla7/customer-service-module:latest
@@ -86,7 +86,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+      #      - eureka-server
       - postgres
       - rabbitmq
   # --> FRAUD
@@ -102,7 +102,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+      #      - eureka-server
       - rabbitmq
       - postgres
   # --> NOTIFICATION
@@ -120,7 +120,7 @@ services:
       - zipkin
       - rabbitmq
       - postgres
-      - eureka-server
+#      - eureka-server
 
 networks:
   postgres:
