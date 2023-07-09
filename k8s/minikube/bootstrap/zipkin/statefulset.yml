@@ -28,7 +28,7 @@ spec:
             limits:
               cpu: 200m
               memory: 256Mi
-      restartPolicy: always
+      restartPolicy: Always
   selector:
     matchLabels:
       app: zipkin
